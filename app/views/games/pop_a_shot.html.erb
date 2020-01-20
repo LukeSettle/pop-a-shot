@@ -1,0 +1,36 @@
+<div id="background">
+  <%= link_to 'View Scores', scores_path, class: 'main-scores-link' %>
+  <div id="timer">
+  </div>
+
+  <div id="scoreBoard">
+    <span>Score: </span><span id="score">0</span>
+  </div>
+
+  <div id="court">
+    <div id="ball"></div>
+  </div>
+
+  <div id="meter">
+    <div class="passed zone"></div>
+    <div class="long zone"></div>
+    <div class="perfect zone"></div>
+    <div class="short zone"></div>
+
+    <div id="meter-fill"></div>
+  </div>
+
+  <div id="shotIndicator">Press the space bar to shoot</div>
+  <div id="gameOverModal" class="hidden">
+    <div id="gameOver">Game Over!</div>
+    <div><span>Score: </span><span id="finalScore"></span></div>
+    <div>Highscore: <%= @highscore&.value %> by <%= @highscore&.name %></div>
+    <%= form_with(model: @score) do |f| %>
+      <%= f.text_field :name, placeholder: 'Enter your name to save your score!', class: 'name-field' %>
+      <%= f.hidden_field :value, id: 'scoreField' %>
+      <%= f.submit 'Save Score', class: 'save-btn' %>
+    <% end %>
+    <%= link_to 'View all scores', scores_path, class: 'scores-btn' %>
+    <button id="restart">Restart</button>
+  </div>
+</div>

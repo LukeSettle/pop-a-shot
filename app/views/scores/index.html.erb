@@ -1,0 +1,5 @@
+<%= link_to 'Play Game', root_path %>
+
+<% @scores.each do |score| %>
+  <li><%= score.name %> : <%= score.value %></li>
+<% end %>
